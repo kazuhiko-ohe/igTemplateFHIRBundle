@@ -20,9 +20,9 @@ jobs:
         ruby-version: ['3.0']
     environment: SSH_PORT_JPFHIR  # JAMI WG アップロードサイトに関するアクセス情報の環境名
     steps:
-
+    - uses: actions/checkout@v4
     - name: Setup npm
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         check-latest: true
     - name: Setup Sushi
