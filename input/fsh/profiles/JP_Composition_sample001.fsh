@@ -1,7 +1,7 @@
 
 Profile: JP_Composition_sample001
 Parent: Composition
-Id: JP-Composition-esample001
+Id: JP-Composition-sample001
 Description:  "サンプルCompositionプロファイル"
 * ^url = "http://jpfhir.jp/fhir/IGsample/StructureDefinition/JP_Composition_sample"
 * ^status = #active

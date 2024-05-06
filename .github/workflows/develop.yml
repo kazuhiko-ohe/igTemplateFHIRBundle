@@ -140,7 +140,7 @@ jobs:
         TargetFolder: sample
       run: |
         rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT_JPFHIR }}" --delete output.tgz  forPackageRelease/jp-sample.r4-${{ env.release_version }}.tgz forPackageRelease/jp-sample.r4-${{ env.release_version }}-snap.tgz ${{ secrets.JAMIWG_USERID_AT_WEBHOST }}:${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/$TargetFolder/ --exclude .htaccess
-        echo '${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/${{env.TargetFolder}}''
+        echo '${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/${{env.TargetFolder}}'
         ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_USERID_AT_WEBHOST }}   'cd ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/${{env.TargetFolder}}/ ; tar xzf output.tgz'
 
 
