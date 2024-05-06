@@ -61,6 +61,10 @@ jobs:
         ls -l .
         pwd
         echo '--1-'
+        ls -l /home/runner/
+        echo '--2-'
+        ls -l /home/runner/work
+        echo '--3-'
         mkdir -p /home/runner/.fhir
         mv $JPPACKAGECOREtgz /home/runner/.fhir/
         mkdir -p /home/runner/.fhir/work
