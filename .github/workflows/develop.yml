@@ -60,15 +60,15 @@ jobs:
       run: |
         ls -l .
         pwd
-        echo '--/home/runner/-'
+        echo '--1-'
         ls -l /home/runner/
-        echo '--/home/runners/-'
-        ls -l /home/runners/
-        echo '--/home/runner/work--'
+        echo '--2-'
+        ls -l /home/runner/runners/
+        echo '--3--'
         ls -l /home/runner/work
-        echo '--/home/runner/work/igTemplateFHIRBundle-'
+        echo '--4-'
         ls -la /home/runner/work/igTemplateFHIRBundle
-        echo '--/home/runner/work/igTemplateFHIRBundle/igTemplateFHIRBundle-'
+        echo '--5-'
         ls -la /home/runner/work/igTemplateFHIRBundle/igTemplateFHIRBundle
 
         echo '---'
