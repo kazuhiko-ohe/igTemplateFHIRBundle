@@ -23,6 +23,14 @@ jobs:
     - name: test
       run: |
         echo $GITHUB_WORKSPACE
+        ls -la $GITHUB_WORKSPACE
+        echo '---'
+        echo $HOME
+        ls -la $HOME
+        echo '---'
+        echo $GGITHUB_EVENT_PATH
+        ls -la $GITHUB_EVENT_PATH
+        echo '---'
         echo '-0.1--'
         pwd
         ls -l .
