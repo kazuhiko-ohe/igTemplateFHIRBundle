@@ -7,7 +7,7 @@ sushi -s .
 #
 cd fsh-generated
 cp -r resources package
-cp ../forPackageRelease/package-snapshot.json package/package.json
+cp ../forPackageRelease/package-snap.json package/package.json
 gtar czf jp-sample.r4-1.0.0.tgz package
 rm -rf package
 cp jp-sample.r4-1.0.0.tgz ../packages_snapshot
