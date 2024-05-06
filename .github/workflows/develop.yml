@@ -11,7 +11,7 @@ on:
   pull_request:
     branches: [ develop ]
 env:
-  release_version : 0.1.0
+  release_version : 1.0.0
   project_name: xxxx
 jobs:
   turn1:
@@ -21,15 +21,6 @@ jobs:
         ruby-version: ['3.0']
     environment: SSH_PORT_JPFHIR  # JAMI WG アップロードサイトに関するアクセス情報の環境名
     steps:
-    - uses: actions/checkout@v2
-    - name: ssh key generate
-      run: |
-          echo "starting"
-          echo "secrets.PERSONAL_TOKEN " ${{ secrets.PERSONAL_TOKEN }}
-          echo "secrets.PERSONAL_TOKEN2 " ${{ secrets.PERSONAL_TOKEN2 }}
-          curl -vv -H "Authorization: token ${{ secrets.PERSONAL_TOKEN }}" -H "Accept: application/vnd.github.everest-preview+json" "https://api.github.com/repos/jami-fhir-jp-wg/eReferral/dispatches" --data '{"event_type": "update", "client_payload": {"ref": "develop1.0"}}'
-          curl -vv -H "Authorization: token ${{ secrets.PERSONAL_TOKEN }}" -H "Accept: application/vnd.github.everest-preview+json" "https://api.github.com/repos/jami-fhir-jp-wg/eDischargeSummary/dispatches" --data '{"event_type": "update", "client_payload": {"ref": "develop1.0"}}'
-
     - name: Setup npm
       uses: actions/setup-node@v2
       with:
@@ -40,7 +31,6 @@ jobs:
     - name: Install Jekyll
       run: |
         sudo apt-get install jekyll
-
     - name: Download IG Publisher
       uses: Legion2/download-release-action@v2.1.0
       with:
@@ -48,21 +38,18 @@ jobs:
         tag: 'latest'
         path: .
         file: publisher.jar
-
-    - name: Download the file
+    - name: Download the file fhir_dotFHIR_packages.tgz
       uses: suisei-cn/actions-download-file@v1.4.0
       id: downloadfile1
       with:
         url: "https://jpfhir.jp/fhir/fhir_dotFHIR_packages.tgz"
         target: .
-  
-    - name: Download the file
+    - name: Download the file jpfhir-terminology.r4-1.1.1.tgz
       uses: suisei-cn/actions-download-file@v1.4.0
       id: downloadfile2
       with:
         url: "https://jpfhir.jp/fhir/core/terminology/jpfhir-terminology.r4-1.1.1.tgz"
         target: .    
-    
     - name: Prepare for using all dependent packages including Jp modified version of hl7.fhir.r4.core Package 
       env:
         JPPACKAGECOREtgz: fhir_dotFHIR_packages.tgz
@@ -112,10 +99,6 @@ jobs:
 
     - name: replace url of html files referring simplifier.net package
       run:  |
-        : # https://simplifier.net/resolve?scope=jp-core.r4@1.1.1-snap&amp;canonical=http://jpfhir.jp/fhir/core/StructureDefinition/JP_Observation_Common"
-        : #   ↓
-        : # https://jpfhir.jp/fhir/core/1.1.1/StructureDefinition-jp-observation-common.html
-        : # https://simplifier.net/resolve?canonical=http%3A%2F%2Fjpfhir.jp%2Ffhir%2Fcore%2FValueSet%2FJP_MedicationSubstitutionNotAllowedReason_VS&scope=jpfhir-terminology@1.1.1
         cd output
         for file in *.html
         do
@@ -132,8 +115,8 @@ jobs:
         cd fsh-generated
         mv resources package
         cp ../forPackageRelease/package-diff.json package/package.json
-        tar czf jp-clins-package-diff.tgz package
-        cp jp-clins-package-diff.tgz ../forPackageRelease/jp-clins.r4-${{ env.release_version }}.tgz
+        tar czf jp-sample-package-diff.tgz package
+        cp jp-sample-package-diff.tgz ../forPackageRelease/jp-sample.r4-${{ env.release_version }}.tgz
         
     - name: generate snapshot package using sushi -s command       
       run: |
@@ -144,9 +127,9 @@ jobs:
         cp fsh-generated-snap/resources/*.json forPackageRelease/snapshot/package/
         cp forPackageRelease/package-snap.json forPackageRelease/snapshot/package/package.json
         cd forPackageRelease/snapshot
-        tar czf jp-clins-package-snap.tgz package
+        tar czf jp-sample-package-snap.tgz package
         cd ..
-        cp snapshot/jp-clins-package-snap.tgz jp-clins.r4-${{ env.release_version }}-snap.tgz
+        cp snapshot/jp-sample-package-snap.tgz jp-sample.r4-${{ env.release_version }}-snap.tgz
         cd ..
 
     - name: ssh key generate
@@ -156,7 +139,7 @@ jobs:
 
     - name: rsync remote-site-deploy
       run: |
-        rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT_JPFHIR }}" --delete output.tgz  forPackageRelease/jp-clins.r4-${{ env.release_version }}.tgz forPackageRelease/jp-clins.r4-${{ env.release_version }}-snap.tgz ${{ secrets.JAMIWG_USERID_AT_WEBHOST }}:${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/clins/ --exclude .htaccess
-        ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_USERID_AT_WEBHOST }}   'cd ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/clins/ ; tar xzf output.tgz'
+        rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT_JPFHIR }}" --delete output.tgz  forPackageRelease/jp-sample.r4-${{ env.release_version }}.tgz forPackageRelease/jp-sample.r4-${{ env.release_version }}-snap.tgz ${{ secrets.JAMIWG_USERID_AT_WEBHOST }}:${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/sample/ --exclude .htaccess
+        ssh -i key  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no  -p ${{ secrets.SSH_PORT_JPFHIR }} ${{ secrets.JAMIWG_USERID_AT_WEBHOST }}   'cd ${{ secrets.JAMIWG_WEBPATH }}/jpfhir.jp/fhir/sample/ ; tar xzf output.tgz'
 
 

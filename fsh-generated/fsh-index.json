@@ -1,0 +1,18 @@
+[
+  {
+    "outputFile": "StructureDefinition-JP-Bundle-sample001.json",
+    "fshName": "JP_Bundle_sample001",
+    "fshType": "Profile",
+    "fshFile": "profiles/JP_Bundle_sample001.fsh",
+    "startLine": 1,
+    "endLine": 68
+  },
+  {
+    "outputFile": "StructureDefinition-JP-Composition-esample001.json",
+    "fshName": "JP_Composition_sample001",
+    "fshType": "Profile",
+    "fshFile": "profiles/JP_Composition_sample001.fsh",
+    "startLine": 2,
+    "endLine": 76
+  }
+]

@@ -1,14 +1,14 @@
 {
-  "name": "jp-clins.r4",
+  "name": "jp-sample.r4",
   "version": "1.0.0-temp",
-  "description": "jp-clins-diff 1.0.0-temp",
-  "author": "Kazuhiko Ohe",
+  "description": "jp-sample-diff 1.0.0-temp",
+  "author": "author name",
   "fhirVersions": [
     "4.0.1"
   ],
   "dependencies": {
     "hl7.fhir.r4.core": "4.0.1"
   },
-  "url": "http://jpfhir.jp/fhir/clins",
-  "canonical": "http://jpfhir.jp/fhir/clins"
+  "url": "http://jpfhir.jp/fhir/jp-sample",
+  "canonical": "http://jpfhir.jp/fhir/jp-sample"
 }
