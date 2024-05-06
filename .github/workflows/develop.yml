@@ -25,7 +25,7 @@ jobs:
         echo '-0.1--'
         pwd
         ls -l .
-        echo '-0.2--'
+        echo '-0.2 --'
         ls -l /home/runner/
         echo '-0.3--'
         ls -l /home/runner/runners/2.316.1
