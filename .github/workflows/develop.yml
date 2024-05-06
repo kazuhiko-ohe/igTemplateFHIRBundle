@@ -20,6 +20,21 @@ jobs:
         ruby-version: ['3.0']
     environment: SSH_PORT_JPFHIR  # JAMI WG アップロードサイトに関するアクセス情報の環境名
     steps:
+    - name: test
+      run: |
+        echo '-0.1--'
+        pwd
+        ls -l .
+        echo '-0.2--'
+        ls -l /home/runner/
+        echo '-0.3--'
+        ls -l /home/runner/runners/
+        echo '-0.4--'
+        ls -l /home/runner/work
+        echo '-0.5--'
+        ls -la /home/runner/work/igTemplateFHIRBundle
+        echo '-0.6--'
+        ls -la /home/runner/work/igTemplateFHIRBundle/igTemplateFHIRBundle
     - name: Setup npm
       uses: actions/setup-node@v2
       with:
