@@ -20,7 +20,7 @@ jobs:
         ruby-version: ['3.0']
     environment: SSH_PORT_JPFHIR  # JAMI WG アップロードサイトに関するアクセス情報の環境名
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4 # リポジトリのコードをチェックアウト（この作業ディレクトリに読み込み）するので必須。作業ディレクトリは環境変数　$GITHUB_WORKSPACE
     - name: Setup npm
       uses: actions/setup-node@v4
       with:
@@ -60,20 +60,6 @@ jobs:
         JPCOREdir: jp-core.r4#1.1.2
         reponame: igTemplateFHIRBundle
       run: |
-        ls -l .
-        pwd
-        echo '--1-'
-        ls -l /home/runner/
-        echo '--2-'
-        ls -l /home/runner/runners/
-        echo '--3--'
-        ls -l /home/runner/work
-        echo '--4-'
-        ls -la /home/runner/work/igTemplateFHIRBundle
-        echo '--5-'
-        ls -la /home/runner/work/igTemplateFHIRBundle/igTemplateFHIRBundle
-
-        echo '---'
         mkdir -p /home/runner/.fhir
         mv $JPPACKAGECOREtgz /home/runner/.fhir/
         mkdir -p /home/runner/.fhir/work
@@ -85,11 +71,7 @@ jobs:
         cd /home/runner/.fhir
         mkdir -p packages/$JPTerminologyCOREdir
         mv /home/runner/.fhir/work/package /home/runner/.fhir/packages/$JPTerminologyCOREdir
-        ls -l /home/runner/work
-        ls -l /home/runner/work/$reponame
-        ls -l /home/runner/work/$reponame/$reponame/
-        ls -l /home/runner/work/$reponame/$reponame/packages_snapshot/
-        mv /home/runner/work/$reponame/$reponame/packages_snapshot/$JPCOREtgzjp /home/runner/.fhir/work/
+        mv $GITHUB_WORKSPACE/packages_snapshot/$JPCOREtgzjp /home/runner/.fhir/work/
         cd /home/runner/.fhir/work
         tar xzf $JPCOREtgzjp
         mkdir -p /home/runner/.fhir/packages/$JPCOREdir
