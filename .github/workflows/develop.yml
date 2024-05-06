@@ -28,7 +28,7 @@ jobs:
         echo '-0.2--'
         ls -l /home/runner/
         echo '-0.3--'
-        ls -l /home/runner/runners/
+        ls -l /home/runner/runners/2.316.1
         echo '-0.4--'
         ls -l /home/runner/work
         echo '-0.5--'
