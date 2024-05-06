@@ -12,7 +12,6 @@ on:
     branches: [ develop ]
 env:
   release_version : 1.0.0
-  project_name: xxxx
 jobs:
   turn1:
     runs-on: ubuntu-latest
@@ -73,6 +72,10 @@ jobs:
         cd /home/runner/.fhir
         mkdir -p packages/$JPTerminologyCOREdir
         mv /home/runner/.fhir/work/package /home/runner/.fhir/packages/$JPTerminologyCOREdir
+        ls -l /home/runner/work
+        ls -l /home/runner/work/$reponame
+        ls -l /home/runner/work/$reponame/$reponame/
+        ls -l /home/runner/work/$reponame/$reponame/packages_snapshot/
         mv /home/runner/work/$reponame/$reponame/packages_snapshot/$JPCOREtgzjp /home/runner/.fhir/work/
         cd /home/runner/.fhir/work
         tar xzf $JPCOREtgzjp
