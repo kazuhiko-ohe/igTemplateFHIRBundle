@@ -57,6 +57,7 @@ jobs:
         JPTerminologyCOREPtgz: jpfhir-terminology.r4-1.1.1.tgz
         JPCOREtgzjp: jp-core.r4-1.1.2.tgz
         JPCOREdir: jp-core.r4#1.1.2
+        reponame: igTemplateFHIRBundle
       run: |
         ls -l .
         pwd
@@ -72,7 +73,7 @@ jobs:
         cd /home/runner/.fhir
         mkdir -p packages/$JPTerminologyCOREdir
         mv /home/runner/.fhir/work/package /home/runner/.fhir/packages/$JPTerminologyCOREdir
-        mv /home/runner/work/clinical-core/clinical-core/packages_snapshot/$JPCOREtgzjp /home/runner/.fhir/work/
+        mv /home/runner/work/$reponame/$reponame/packages_snapshot/$JPCOREtgzjp /home/runner/.fhir/work/
         cd /home/runner/.fhir/work
         tar xzf $JPCOREtgzjp
         mkdir -p /home/runner/.fhir/packages/$JPCOREdir
