@@ -60,15 +60,17 @@ jobs:
       run: |
         ls -l .
         pwd
-        echo '--1-'
+        echo '--/home/runner/-'
         ls -l /home/runner/
-        echo '--2-'
+        echo '--/home/runners/-'
+        ls -l /home/runners/
+        echo '--/home/runner/work--'
         ls -l /home/runner/work
-        echo '--3-'
+        echo '--/home/runner/work/igTemplateFHIRBundle-'
         ls -la /home/runner/work/igTemplateFHIRBundle
-        echo '--4-'
+        echo '--/home/runner/work/igTemplateFHIRBundle/igTemplateFHIRBundle-'
         ls -la /home/runner/work/igTemplateFHIRBundle/igTemplateFHIRBundle
-        echo '--5-'
+
         echo '---'
         mkdir -p /home/runner/.fhir
         mv $JPPACKAGECOREtgz /home/runner/.fhir/
