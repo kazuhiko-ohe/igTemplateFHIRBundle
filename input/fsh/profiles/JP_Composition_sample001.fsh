@@ -19,7 +19,7 @@ Description:  "サンプルCompositionプロファイル"
 * type ^definition = "documentタイプのうち文書種別"
 * type MS
 * type from http://jpfhir.jp/fhir/IGsample/ValueSet/doc-typecodes (required)
-* type.coding.code = #57133-1
+* type.coding.code = #12345-1
 * type.coding.display = "サンプル医療文書種別"
 
 * category 1..1 MS
@@ -27,7 +27,7 @@ Description:  "サンプルCompositionプロファイル"
 * category ^definition = "文書カテゴリーコード。type.coding.codeに記述される文書区分コードと同一とすることもあり。"
 * category.coding 1..1 MS
 * category from http://jpfhir.jp/fhir/IGsample/ValueSet/doc-typecodes (required)
-* category.coding.code = #57133-1 (exactly)
+* category.coding.code = #12345-1 (exactly)
 * category.coding.display = "サンプル医療文書種別"
 
 * subject 1.. MS

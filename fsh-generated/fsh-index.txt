@@ -1,3 +1,0 @@
-Output File                                         Name                      Type     FSH File                               Lines
-StructureDefinition-JP-Bundle-sample001.json        JP_Bundle_sample001       Profile  profiles/JP_Bundle_sample001.fsh       1 - 68
-StructureDefinition-JP-Composition-esample001.json  JP_Composition_sample001  Profile  profiles/JP_Composition_sample001.fsh  2 - 76

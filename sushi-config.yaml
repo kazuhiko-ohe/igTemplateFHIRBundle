@@ -90,4 +90,10 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
     - json
   no-validate:
     - '*/hl7.fhir.jp.core'
-#  special-url:
+  special-url:
+    - http://jpfhir.jp/fhir/IGsample/StructureDefinition/JP_Bundle_sample001
+    - http://jpfhir.jp/fhir/IGsample/StructureDefinition/JP_Composition_sample
+    - http://jpfhir.jp/fhir/IGsample/CodeSystem/document-section
+    - http://jpfhir.jp/fhir/IGsample/CodeSystem/doc-typecodes
+    - http://jpfhir.jp/fhir/IGsample/ValueSet/doc-typecodes
+    - http://jpfhir.jp/fhir/IGsample/ValueSet/document-section
