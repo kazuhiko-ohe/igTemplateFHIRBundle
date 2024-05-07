@@ -38,7 +38,9 @@ pages:
     title: サンプル医療文書のFHIR仕様  JP-sample
   samplePage.md:
     title: 詳細説明
-
+  validationGuide.md:
+    title: Validationガイド
+    
 #-------------------------------------
 # メニュー設定
 #-------------------------------------
@@ -52,7 +54,7 @@ menu:
   Validationガイド:
     Validationガイド: validationGuide.html    
   パッケージDownload:
-    標準(diff)版: https://jpfhir.jp/fhir/sample/jjp-sample.r4-1.0.0.tgz
+    標準(diff)版: https://jpfhir.jp/fhir/sample/jp-sample.r4-1.0.0.tgz
     snapshot版: https://jpfhir.jp/fhir/sample/jp-sample.r4-1.0.0-snap.tgz    
 #-----------------------------------------
 # IG 外部パラメータ設定
