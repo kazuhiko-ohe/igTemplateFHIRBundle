@@ -49,6 +49,8 @@ menu:
     プロファイル: artifacts.html
   Artifacts: 
     Artifacts: artifacts.html
+  Validationガイド:
+    Validationガイド: validationGuide.html    
   パッケージDownload:
     標準(diff)版: https://jpfhir.jp/fhir/sample/jjp-sample.r4-1.0.0.tgz
     snapshot版: https://jpfhir.jp/fhir/sample/jp-sample.r4-1.0.0-snap.tgz    
